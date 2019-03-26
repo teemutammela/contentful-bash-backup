@@ -10,9 +10,9 @@ Contentful is registered trademark of Contentful GmbH.
 
 # Features
 
-* Exports entries and assets as JSON data and compresses them as ZIP-files
-* Option to download asset files (incremental, no duplicates)
-* Silent running, all output is printed into export logs
+* Exports entries and assets as JSON data and compresses them as ZIP-files.
+* Option to download asset files (incremental, no duplicates).
+* Silent running, all output is printed into export logs.
 
 ## Requirements
 
@@ -23,19 +23,19 @@ Contentful is registered trademark of Contentful GmbH.
 
 ## Installation
 
-*1)* Clone repository.
+__1)__ Clone repository.
 
 `$ git clone https://github.com/teemutammela/contentful-bash-backup.git`
 
-*2)* Install [Contentful CLI](https://github.com/contentful/contentful-cli).
+__2)__ Install [Contentful CLI](https://github.com/contentful/contentful-cli).
 
 `$ npm install -g contentful-cli`
 
-*3)* If you don't already have a management token, create one in the Contentful Web App at _Space settings → API keys → Content management tokens_.
+__3)__ If you don't already have a management token, create one in the Contentful Web App at _Space settings → API keys → Content management tokens_.
 
 ## Usage
 
-`$ ./contentful-bash-backup/run.sh [-t </PATH/TO/TARGET_DIR>] [-m <MANAGEMENT_TOKEN>] [-s <SPACE_ID>] [-e <ENVIRONMENT_ID>] [-f]`
+`$ ./run.sh [-t </PATH/TO/TARGET_DIR>] [-m <MANAGEMENT_TOKEN>] [-s <SPACE_ID>] [-e <ENVIRONMENT_ID>] [-f]`
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Contentful is registered trademark of Contentful GmbH.
 |`-e`      |Contentful environment ID         |no       |master         |
 |`-f`      |Download asset files              |no       |-              |
 
-Contentful Bash Back-up is primarily intended to be used in conjunction with `cron`. In the following example the JSON data of entries and assets is exported every day at 12:15 and and export that also downloads the asset files is executed every Sunday at 12:30.
+_Contentful Bash Back-up_ is primarily intended to be used in conjunction with `cron`. In the following example the JSON data of entries and assets is exported every day at 12:15 and and export that also downloads the asset files is executed every Sunday at 12:30.
 
 As a general guideline it is practical to export the JSON data more frequently than the asset files, as they former is more susceptible to change than the latter.
 
@@ -56,13 +56,13 @@ As a general guideline it is practical to export the JSON data more frequently t
 30	12	0	*	7	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" >/dev/null 2>&1
 ```
 
-After the export process is complete, a new back-up file can be found at `/<target_dir>/entries/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.zip` and the log at `/<target_dir>/log/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.log`.
+After the export process is complete, a new back-up file can be found at `/<target_dir>/entries/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.zip` and the log at `/<target_dir>/logs/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.log`.
 
-*NOTE!* Entries and assets in draft state are _not_ exported.
+__NOTE!__ Entries and assets in draft state are _not_ exported.
 
 If the `-f` parameter was selected, asset files can be found in the directories `/<target_dir>/downloads.ctfassets.net/` and `/<target_dir/images.ctfassets.net/`. Please note, that to in order to avoid duplicate files, asset file directories are _not_ compressed which can consume a fair amount of storage space.
 
-*NOTE!* Downloading asset files can be a lengthy process and can potentially deplete your bandwidth quota depending on your subscription model. Please refer to Contentful's [Fair Use Policy](https://www.contentful.com/r/knowledgebase/fair-use/) documentation for further details.
+__NOTE!__ Downloading asset files can be a lengthy process and can potentially deplete your bandwidth quota depending on your subscription model. Please refer to Contentful's [Fair Use Policy](https://www.contentful.com/r/knowledgebase/fair-use/) documentation for further details.
 
 ## Disclaimer
 
