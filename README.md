@@ -8,6 +8,20 @@ Bash script for making periodical back-ups of [Contentful](https://www.contentfu
 
 Contentful is registered trademark of Contentful GmbH.
 
+## Author
+
+**Teemu Tammela**
+
+* [teemu.tammela@auralcandy.net](mailto:teemu.tammela@auralcandy.net)
+* [www.auralcandy.net](https://www.auralcandy.net/)
+* [github.com/teemutammela](https://github.com/teemutammela)
+* [www.linkedin.com/in/teemutammela](https://www.linkedin.com/in/teemutammela/)
+* [t.me/teemutammela](http://t.me/teemutammela)
+
+## Disclaimer
+
+Contentful Bash Back-up is distributed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) and comes with ABSOLUTELY NO WARRANTY. The author assumes no responsibility of data loss or any other unintended side-effect.
+
 # Features
 
 * Exports entries and assets as JSON data and compresses them as ZIP-files.
@@ -63,7 +77,3 @@ __NOTE!__ Entries and assets in draft state are _not_ exported.
 If the `-f` parameter was selected, asset files can be found in the directories `/<target_dir>/downloads.ctfassets.net/` and `/<target_dir/images.ctfassets.net/`. Please note, that to in order to avoid duplicate files, asset file directories are _not_ compressed which can consume a fair amount of storage space.
 
 __NOTE!__ Downloading asset files can be a lengthy process and can potentially deplete your bandwidth quota depending on your subscription model. Please refer to Contentful's [Fair Use Policy](https://www.contentful.com/r/knowledgebase/fair-use/) documentation for further details.
-
-## Disclaimer
-
-Contentful Bash Back-up is distributed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) and comes with ABSOLUTELY NO WARRANTY. The author assumes no responsibility of data loss or any other unintended side-effect.
