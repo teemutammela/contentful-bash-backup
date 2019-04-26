@@ -22,7 +22,7 @@ Contentful is registered trademark of Contentful GmbH.
 
 Contentful Bash Back-up is distributed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) and comes with ABSOLUTELY NO WARRANTY. The author assumes no responsibility of data loss or any other unintended side-effect.
 
-# Features
+## Features
 
 * Exports entries and assets as JSON data and compresses them as ZIP-files.
 * Option to download asset files (incremental, no duplicates).
