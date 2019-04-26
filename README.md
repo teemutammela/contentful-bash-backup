@@ -59,11 +59,11 @@ __3)__ If you don't already have a management token, create one in the Contentfu
 |`-m`      |Contentful management token       |yes      |-              |
 |`-s`      |Contentful space ID               |yes      |-              |
 |`-e`      |Contentful environment ID         |no       |master         |
-|`-f`      |Download asset files              |no       |-              |
+|`-f`      |Download asset files              |no       |no             |
 
-_Contentful Bash Back-up_ is primarily intended to be used in conjunction with `cron`. In the following example the JSON data of entries and assets is exported every day at 12:15 and and export that also downloads the asset files is executed every Sunday at 12:30.
+_Contentful Bash Back-up_ is primarily intended to be used in conjunction with `cron`. In the following example the JSON data of entries and assets is exported every day at 12:15 and another export operation that also downloads the asset files is executed every Sunday at 12:30.
 
-As a general guideline it is practical to export the JSON data more frequently than the asset files, as they former is more susceptible to change than the latter.
+As a general guideline it is practical to export the JSON data more frequently than the asset files, as the former is more susceptible to change than the latter.
 
 ```
 15	12	*	*	*	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" >/dev/null 2>&1
@@ -74,6 +74,6 @@ After the export process is complete, a new back-up file can be found at `/<targ
 
 __NOTE!__ Entries and assets in draft state are _not_ exported.
 
-If the `-f` parameter was selected, asset files can be found in the directories `/<target_dir>/downloads.ctfassets.net/` and `/<target_dir/images.ctfassets.net/`. Please note, that to in order to avoid duplicate files, asset file directories are _not_ compressed which can consume a fair amount of storage space.
+If the `-f` parameter was selected, asset files can be found in the directories `/<target_dir>/downloads.ctfassets.net/` and `/<target_dir>/images.ctfassets.net/`. Please note, that to to avoid duplicate files, asset file directories are _not_ compressed which can consume a fair amount of storage space.
 
 __NOTE!__ Downloading asset files can be a lengthy process and can potentially deplete your bandwidth quota depending on your subscription model. Please refer to Contentful's [Fair Use Policy](https://www.contentful.com/r/knowledgebase/fair-use/) documentation for further details.
