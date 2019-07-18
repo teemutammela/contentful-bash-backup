@@ -67,7 +67,7 @@ As a general guideline it is practical to export the JSON data more frequently t
 
 ```
 15	12	*	*	*	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" >/dev/null 2>&1
-30	12	0	*	7	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" >/dev/null 2>&1
+30	12	0	*	7	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" -f >/dev/null 2>&1
 ```
 
 After the export process is complete, a new back-up file can be found at `/<target_dir>/entries/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.zip` and the log at `/<target_dir>/logs/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.log`.
