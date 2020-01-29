@@ -20,13 +20,13 @@ Contentful is registered trademark of Contentful GmbH.
 
 ## Disclaimer
 
-Contentful Bash Back-up is distributed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) and comes with ABSOLUTELY NO WARRANTY. The author assumes no responsibility of data loss or any other unintended side-effect.
+**Contentful Bash Back-up** is distributed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) and comes with **absolutely no warranty**. The author assumes no responsibility of data loss or any other unintended side-effect.
 
 ## Features
 
 * Exports entries and assets as JSON data and compresses them as ZIP-files.
 * Option to download asset files (incremental, no duplicates).
-* Silent running, all output is printed into export logs.
+* Silent running, all output is printed into export log.
 
 ## Requirements
 
@@ -49,31 +49,31 @@ __3)__ If you don't already have a management token, create one in the Contentfu
 
 ## Usage
 
+`$ ./run.sh help`
+
 `$ ./run.sh [-t </PATH/TO/TARGET_DIR>] [-m <MANAGEMENT_TOKEN>] [-s <SPACE_ID>] [-e <ENVIRONMENT_ID>] [-f]`
 
 ### Parameters
 
-|Parameter |Description                       |Required |Default value  |
-|----------|----------------------------------|---------|---------------|
-|`-t`      |Path to back-up target directory  |yes      |-              |
-|`-m`      |Contentful management token       |yes      |-              |
-|`-s`      |Contentful space ID               |yes      |-              |
-|`-e`      |Contentful environment ID         |no       |master         |
-|`-f`      |Download asset files              |no       |no             |
+| Parameter | Description                       | Required | Default Value  |
+|-----------|-----------------------------------|----------|----------------|
+|`-t`       | Path to Back-up Target Directory  | Yes      | -              |
+|`-m`       | Contentful Management Token       | Yes      | -              |
+|`-s`       | Contentful Space ID               | Yes      | -              |
+|`-e`       | Contentful Environment ID         | No       | `master`       |
+|`-f`       | Download Asset Files              | No       | No             |
 
-_Contentful Bash Back-up_ is primarily intended to be used in conjunction with `cron`. In the following example the JSON data of entries and assets is exported every day at 12:15 and another export operation that also downloads the asset files is executed every Sunday at 12:30.
-
-As a general guideline it is practical to export the JSON data more frequently than the asset files, as the former is more susceptible to change than the latter.
+**Contentful Bash Back-up** is intended to be used in conjunction with `cron`. As a general rule of thumb, it's practical to export entries more often than assets, as entries change more frequently. In the following example entries are exported every day at 12:15. Another export operation that also downloads the assets is executed every Sunday at 12:30.
 
 ```
 15	12	*	*	*	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" >/dev/null 2>&1
 30	12	0	*	7	/bin/sh /path/to/contentful-bash-backup/run.sh -t "/path/to/target_dir/" -m "XYZ123" -s "XYZ123" -f >/dev/null 2>&1
 ```
 
-After the export process is complete, a new back-up file can be found at `/<target_dir>/entries/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.zip` and the log at `/<target_dir>/logs/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.log`.
+After the export process is complete, a new back-up file is located at `/<TARGET_DIR>/entries/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.zip` and the log at `/<TARGET_DIR>/logs/YYYY-MM/entries-YYYY-MM-DD_HH.MM.SS.log`.
 
 __NOTE!__ Entries and assets in draft state are _not_ exported.
 
-If the `-f` parameter was selected, asset files can be found in the directories `/<target_dir>/downloads.ctfassets.net/` and `/<target_dir>/images.ctfassets.net/`. Please note, that to to avoid duplicate files, asset file directories are _not_ compressed which can consume a fair amount of storage space.
+If the `-f` parameter was selected, assets are located in directories `/<TARGET_DIR>/downloads.ctfassets.net/` and `/<TARGET_DIR>/images.ctfassets.net/`. Please note, that in order to avoid duplicate files, asset directories are _not_ compressed which can consume a fair amount of storage space.
 
 __NOTE!__ Downloading asset files can be a lengthy process and can potentially deplete your bandwidth quota depending on your subscription model. Please refer to Contentful's [Fair Use Policy](https://www.contentful.com/r/knowledgebase/fair-use/) documentation for further details.

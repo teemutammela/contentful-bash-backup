@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Contentful Bash Back-up - Teemu Tammela 2019 (teemu.tammela@auralcandy.net)
+# Contentful Bash Back-up - Teemu Tammela 2019-2020 (teemu.tammela@auralcandy.net)
 # Distributed under GNU General Public License v3.0
 
 # Print help message
@@ -9,40 +9,40 @@ function show_help {
   echo ""
   echo "Usage: ./run.sh [-t </PATH/TO/TARGET_DIR>] [-m <MANAGEMENT_TOKEN>] [-s <SPACE_ID>] [-e <ENVIRONMENT_ID>] [-f]"
   echo ""
-  echo "-t    Path to back-up target directory"
-  echo "-m    Contentful management token"
-  echo "-s    Contentful space ID"
-  echo "-e    Contentful environment ID (optional, default 'master')"
-  echo "-f    Download asset files (optional)"
-  echo ""  
+  echo " -t    Path to Back-up Target Directory"
+  echo " -m    Contentful Management Token"
+  echo " -s    Contentful Space ID"
+  echo " -e    Contentful Environment ID (optional, default 'master')"
+  echo " -f    Download Asset Files (optional)"
+  echo ""
 
 }
 
 # Read command line parameters
 while getopts ":t:m:s:e:f" OPTION; do
-    
+
   case ${OPTION} in
-    
+
     # Back-up target directory path
     t) BACKUP_DIR=$OPTARG ;;
 
-    # Contentful management token      
+    # Contentful management token
     m) MANAGEMENT_TOKEN=$OPTARG ;;
 
-    # Contentful space ID      
+    # Contentful space ID
     s) SPACE_ID=$OPTARG ;;
-    
-    # Contentful environment ID      
+
+    # Contentful environment ID
     e) ENVIRONMENT=$OPTARG ;;
-    
+
     # Download asset files
     f) DOWNLOAD_FILES="--download-assets" ;;
-    
-    # Help  
+
+    # Help
     \?) show_help; exit 1 ;;
-      
+
   esac
-  
+
 done
 
 # Verify that required parameters are not empty
@@ -58,7 +58,7 @@ fi
 
 # Verify that back-up directory exists and is writable
 if [ -d "$BACKUP_DIR" ] && [ -w "$BACKUP_DIR" ]; then
-  
+
   # Change location to back-up directory
   cd $BACKUP_DIR
 
@@ -74,7 +74,7 @@ if [ -d "$BACKUP_DIR" ] && [ -w "$BACKUP_DIR" ]; then
   mkdir -p "logs"
   mkdir -p "logs/$MONTH"
 
-  # Get Contentful CLI executable path  
+  # Get Contentful CLI executable path
   CONTENTFUL=`which contentful`
 
   # Export entries from Contentful
@@ -85,7 +85,7 @@ if [ -d "$BACKUP_DIR" ] && [ -w "$BACKUP_DIR" ]; then
 
     # Compress export JSON file into a ZIP package
     zip "entries/$MONTH/entries-$DATE.zip" $JSON_FILE >> $LOG_FILE
-  
+
     # Delete export JSON file
     rm $JSON_FILE
 
