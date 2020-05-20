@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Contentful Bash Back-up - Teemu Tammela 2019-2020 (teemu.tammela@auralcandy.net)
 # Distributed under GNU General Public License v3.0
